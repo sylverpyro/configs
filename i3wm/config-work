@@ -15,6 +15,7 @@ set $mod Mod4
 # is used in the bar {} block below.
 #font pango:monospace 8
 font xft:Liberation Sans Mono 9
+#font xft:Liberation Sans Mono Condensed 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -29,6 +30,7 @@ font xft:Liberation Sans Mono 9
 
 # Window look'n feel
 new_window pixel
+new_float pixel 
 
 # Workspace => Screen bindings
 workspace 1 output DP-3
@@ -61,11 +63,7 @@ floating_modifier $mod
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+space exec dmenu_run
 
 # change focus
 bindsym $mod+Left focus left
@@ -155,12 +153,6 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
@@ -185,6 +177,9 @@ bindsym $mod+l exec xscreensaver-command --lock
 bindsym XF86AudioMute exec "~/bin/vol-control.sh mute"
 bindsym XF86AudioLowerVolume exec "~/bin/vol-control.sh lower"
 bindsym XF86AudioRaiseVolume exec "~/bin/vol-control.sh raise"
+# Brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight +10
+bindsym XF86MonBrightnessDown exec xbacklight -10
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
