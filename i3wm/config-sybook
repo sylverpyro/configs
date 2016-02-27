@@ -10,10 +10,6 @@ set $mod Mod4
 font xft:Liberation Sans Mono Condensed 10
 # font pango:DejaVu Sans Mono 10
 
-# Workspace behaviour
-workspace_auto_back_and_forth yes
-bindsym Ctrl+Mod1+Right workspace next_on_output
-bindsym Ctrl+Mod1+Left workspace prev_on_output
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -88,7 +84,12 @@ bindsym $mod+Shift+m floating toggle
 # focus the child container
 #bindsym $mod+d focus child
 
+# Workspace behaviour
+workspace_auto_back_and_forth yes
+
 # switch to workspace
+bindsym Ctrl+Mod1+Right workspace next_on_output
+bindsym Ctrl+Mod1+Left workspace prev_on_output
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -106,6 +107,8 @@ bindsym $mod+bracketright workspace 14
 bindsym $mod+backslash workspace 15
 
 # move focused container to workspace
+bindsym $mod+Ctrl+Shift+Right move container to workspace next_on_output, workspace next_on_output
+bindsym $mod+Ctrl+Shift+Left move container to workspace prev_on_output, workspace prev_on_output
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3

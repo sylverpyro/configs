@@ -1,0 +1,114 @@
+#If on battery power, turn down the update interval
+update_interval_on_battery 15
+update_interval 15
+alignment top_left
+# Do not fork to background when run
+background no
+cpu_avg_samples 2
+# Default colors
+default_color white
+default_outline_color white
+default_shade_color white
+# Border and outline settings
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+# Use XFT (anti-aliased fonts)
+use_xft yes
+# Default Font and size
+xftfont DejaVu Sans Mono:size=9
+# Horizontal padding
+gap_x 5
+# Vertical padding
+gap_y 5
+minimum_size 200 700
+net_avg_samples 2
+# Subtract buffers from RAM calculations
+no_buffers yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+# Eliminate Flickering
+#double_buffer yes
+# Draw in own window to reduce buffer size
+own_window yes
+own_window_class Conky
+own_window_type desktop
+# Make the window transparent (see the background)
+own_window_transparent yes
+stippled_borders 0
+update_interval 5.0
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+# Abreviate Units
+short_units yes
+# Link up only when link detected
+if_up_strictness link
+# Digit padding
+pad_percents 2
+# Increase the max user bytes
+max_user_text 32768
+text_buffer_size 1024
+TEXT
+${color grey}$color${time %a, %b %d, %Y - %H:%M:%S  %Z}
+${color grey}Uptime:$color $uptime ${color grey}|$color ${loadavg}
+${color grey}----Power---------------------------------
+${color grey}Bat:$color ${battery BAT1} ${color grey}|$color ${color grey}Mode:$color ${laptop_mode} ${color grey}|$color ${acpitemp}C / 110C 
+${color grey}----Temps---------------------------------
+${color grey}Phys 0 :$color ${hwmon 1 temp 1}C / 105C
+${color grey}Core 0 :$color ${hwmon 1 temp 2}C / 105C
+${color grey}Core 1 :$color ${hwmon 1 temp 3}C / 105C
+${color grey}----CPU and Mem---------------------------
+${color grey}CPU:   $color ${cpugraph cpu0 10,100 -t} ${cpu cpu0}% | ${freq_g}GHz
+${color grey}RAM:   $color ${membar 4,100} $memperc% | $mem / $memmax
+${color grey}Swap:  $color ${swapbar 4,100} $swapperc% | $swap / $swapmax
+${color grey}Cache: $color $cached | ${color grey}Buffers:$color $buffers
+${color grey}----Disks---------------------------------
+${color grey}/dev/sda ${color white}${diskiograph /dev/sda 10,75} ${color grey}Read: ${color white}${diskio_read /dev/sda} ${color grey}Write: ${color white}${diskio_write /dev/sda}
+${if_mounted /}\
+/          : $color${fs_used /}/${fs_size /} ${fs_bar 6,75 /}
+${endif}\
+${if_mounted /tmp}\
+/tmp       : $color${fs_used /tmp}/${fs_size /tmp} ${fs_bar 6,75 /tmp}
+${endif}\
+${color grey}----Network-------------------------------
+${if_up wlp0s26u1u4i2}\
+${color grey}SSID:$color ${wireless_essid wlp0s26u1u4i2} | ${color grey}Qual: $color${wireless_link_qual_perc wlp0s26u1u4i2}% |${color grey} Br:${wireless_bitrate wlp0s26u1u4i2}
+${color grey}wlp0s26u1u4i2:${color} ${addrs wlp0s26u1u4i2}
+${color grey}Tx:$color ${upspeedgraph wlp0s26u1u4i2 10,100 -t} ${upspeed wlp0s26u1u4i2} 
+${color grey}Rx:$color ${downspeedgraph wlp0s26u1u4i2 10,100 -t} ${downspeed wlp0s26u1u4i2}
+${color grey}Total Tx:$color ${totalup wlp0s26u1u4i2} ${color grey}Rx:$color ${totaldown wlp0s26u1u4i2}
+${endif}\
+${color grey}----Processes------------------------------
+${color grey}Running:$color $running_processes ${color grey}| Total:$color $processes  
+${color grey}Name                PID   CPU%   MEM%   IO     TIME 
+${color lightgrey} ${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1} ${top io_perc 1} ${top time 1}
+${color lightgrey} ${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2} ${top io_perc 2} ${top time 2}
+${color lightgrey} ${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3} ${top io_perc 3} ${top time 3}
+${color grey}By Memory:
+${color lightgrey} ${top_mem name 1} ${top_mem pid 1} ${top_mem cpu 1} ${top_mem mem 1} ${top_mem io_perc 1} ${top_mem time 1}
+${color lightgrey} ${top_mem name 2} ${top_mem pid 2} ${top_mem cpu 2} ${top_mem mem 2} ${top_mem io_perc 2} ${top_mem time 2}
+${color lightgrey} ${top_mem name 3} ${top_mem pid 3} ${top_mem cpu 3} ${top_mem mem 3} ${top_mem io_perc 3} ${top_mem time 3}
+${color grey}By IO:
+${color lightgrey} ${top_io name 1} ${top_io pid 1} ${top_io cpu 1} ${top_io mem 1} ${top_io io_perc 1} ${top_io time 1}
+${color lightgrey} ${top_io name 2} ${top_io pid 2} ${top_io cpu 2} ${top_io mem 2} ${top_io io_perc 2} ${top_io time 2}
+${color lightgrey} ${top_io name 3} ${top_io pid 3} ${top_io cpu 3} ${top_io mem 3} ${top_io io_perc 3} ${top_io time 3}
+${color grey}By Time:
+${color lightgrey} ${top_time name 1} ${top_time pid 1} ${top_time cpu 1} ${top_time mem 1} ${top_time io_perc 1} ${top_time time 1}
+${color lightgrey} ${top_time name 2} ${top_time pid 2} ${top_time cpu 2} ${top_time mem 2} ${top_time io_perc 2} ${top_time time 2}
+${color lightgrey} ${top_time name 3} ${top_time pid 3} ${top_time cpu 3} ${top_time mem 3} ${top_time io_perc 3} ${top_time time 3}
+----Programs--------------------------
+W-w : Firefox
+W-k : KeePass
+W-c : Calculator
+----Other Programs--------------------
+CAD        : qcad
+PDF Reader : acroread
+Emulation  : ~/bin/emu.sh <platform> <rom>
+Burning    : brasero
+Disk Usage : baobab
+File Brows : rox
+Image View : feh
