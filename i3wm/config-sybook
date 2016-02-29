@@ -32,7 +32,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -10
 bindsym $mod+t exec lxterminal
 bindsym $mod+c exec galculator
 bindsym $mod+w exec google-chrome-stable
-bindsym $mod+shift+w exec firefox
+bindsym $mod+shift+w exec firefox --private-window
 bindsym $mod+b exec "$HOME/bin/bg_rotation.sh"
 bindsym $mod+l exec xautolock -locknow
 bindsym $mod+k exec keepass
