@@ -17,6 +17,7 @@ order += "disk /tmp"
 #order += "run_watch DHCP"
 #order += "run_watch VPN"
 order += "wireless wlp0s26u1u4i2"
+order += "wireless wlp0s26u1u2"
 order += "wireless enp0s20u2"
 order += "wireless enp0s26u1u2"
 order += "ethernet eth0"
@@ -27,10 +28,16 @@ order += "volume master"
 
 wireless wlp0s26u1u4i2 {
         format_up = "Int. WiFi: (%essid|%bitrate|%quality) %ip"
+        format_down = ""
 }
 
+wireless wlp0s26u1u2 {
+        format_up = "USB WiFi: (%essid|%bitrate|%quality) %ip"
+        format_down = ""
+}
 wireless enp0s26u1u2 {
         format_up = "USB WiFi: (%essid|%bitrate|%quality) %ip"
+        format_down = ""
 }
 
 ethernet eth0 {

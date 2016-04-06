@@ -25,23 +25,23 @@ bindsym XF86AudioLowerVolume exec --no-startup-id (pa_sink="`pactl info | grep "
 bindsym XF86AudioMute exec --no-startup-id (pa_sink="`pactl info | grep "^Default Sink:" | cut -d ' ' -f 3`" && pactl set-sink-mute $pa_sink toggle && killall -USR1 i3status)
 
 # Brightness bindings
-bindsym XF86MonBrightnessUp exec xbacklight +10
-bindsym XF86MonBrightnessDown exec xbacklight -10
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -10
 
 # Application bindings
-bindsym $mod+t exec lxterminal
-bindsym $mod+c exec galculator
-bindsym $mod+w exec google-chrome-stable
-bindsym $mod+shift+w exec firefox --private-window
-bindsym $mod+b exec "$HOME/bin/bg_rotation.sh"
-bindsym $mod+l exec xautolock -locknow
-bindsym $mod+k exec keepass
-bindsym $mod+p exec pavucontrol
-bindsym $mod+m exec /usr/bin/minecraft
-bindsym $mod+s exec steam
+bindsym $mod+t exec --no-startup-id lxterminal
+bindsym $mod+c exec --no-startup-id galculator
+bindsym $mod+w exec --no-startup-id google-chrome-stable
+bindsym $mod+shift+w exec --no-startup-id firefox --private-window
+bindsym $mod+b exec --no-startup-id "$HOME/bin/bg_rotation.sh"
+bindsym $mod+l exec --no-startup-id xautolock -locknow
+bindsym $mod+k exec --no-startup-id keepass
+bindsym $mod+p exec --no-startup-id pavucontrol
+bindsym $mod+m exec --no-startup-id /usr/bin/minecraft
+bindsym $mod+s exec --no-startup-id steam
 
 # Launch dmenu to quick launch
-bindsym $mod+space exec dmenu_run
+bindsym $mod+space exec --no-startup-id dmenu_run
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -169,20 +169,20 @@ for_window [class="Galculator"] floating enable
 for_window [class="Steam"] floating enable
 for_window [class="[M|m]inecraft"] floating enable
 # Turn off x screen blanking to let i3lock take care of it
-exec xset s off
-exec xset dpms 1200 1200 1200
+exec --no-startup-id xset s off
+exec --no-startup-id xset dpms 1200 1200 1200
 # Turn on the autolocker
-exec xautolock -time 15 -locker "i3lock -i /home/sylverpyro/btsync/media/wallpapers/nightvale-dog-park-regulations.png -c 000000"
+exec --no-startup-id xautolock -time 15 -locker "i3lock -i /home/sylverpyro/btsync/media/wallpapers/nightvale-dog-park-regulations.png -c 000000"
 # Start the compositor
 #exec compton -b
 # Start the BG rotation
-exec $HOME/bin/bg_rotation.sh
+exec --no-startup-id $HOME/bin/bg_rotation.sh
 # Rebuild and install the wifi driver if it's not present
 #exec $HOME/bin/build-8723au-driver.sh build wifi
 # Load up the system tray
 #exec btsyncindicator --config $HOME/.config/btsync/btsync.conf --iconpath /usr/share/pixmaps/btsyncindicator
 #exec (sleep 3 && /usr/bin/nm-applet --sm-disable)
-exec /usr/bin/nm-applet --sm-disable
-exec volumeicon
-exec (pactl set-sink-mute 0 0 && pactl set-sink-volume 0 30% && killall -USR1 i3status)
-exec xflux -z 55414 -k 2000
+exec --no-startup-id /usr/bin/nm-applet --sm-disable
+exec --no-startup-id volumeicon
+exec --no-startup-id (pactl set-sink-mute 0 0 && pactl set-sink-volume 0 30% && killall -USR1 i3status)
+exec --no-startup-id xflux -z 55414 -k 2000
