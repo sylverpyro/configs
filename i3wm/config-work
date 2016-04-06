@@ -15,7 +15,6 @@ set $mod Mod4
 # is used in the bar {} block below.
 #font pango:monospace 8
 font xft:Liberation Sans Mono 9
-#font xft:Liberation Sans Mono Condensed 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -30,7 +29,6 @@ font xft:Liberation Sans Mono 9
 
 # Window look'n feel
 new_window pixel
-new_float pixel 
 
 # Workspace => Screen bindings
 workspace 1 output DP-3
@@ -63,7 +61,11 @@ floating_modifier $mod
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+space exec dmenu_run
+bindsym $mod+d exec dmenu_run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+Left focus left
@@ -153,6 +155,12 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
@@ -170,16 +178,15 @@ bindsym $mod+r mode "resize"
 bindsym $mod+t exec gnome-terminal
 bindsym $mod+x exec xchat
 bindsym $mod+c exec gnome-calculator
-bindsym $mod+w exec google-chrome
+bindsym $mod+w exec google-chrome-stable --profile-directory=Default
+bindsym $mod+Ctrl+Shift+bracketright exec google-chrome-stable --profile-directory="Profile 2" mail.google.com
+bindsym $mod+Ctrl+Shift+backslash exec google-chrome-stable --profile-directory="Profile 3" play.google.com/music/listen
 bindsym $mod+Shift+w exec firefox
 bindsym $mod+l exec xscreensaver-command --lock
 # Audio controls
 bindsym XF86AudioMute exec "~/bin/vol-control.sh mute"
 bindsym XF86AudioLowerVolume exec "~/bin/vol-control.sh lower"
 bindsym XF86AudioRaiseVolume exec "~/bin/vol-control.sh raise"
-# Brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight +10
-bindsym XF86MonBrightnessDown exec xbacklight -10
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -193,3 +200,14 @@ bar {
 # Background services that need to be up
 exec --no-startup-id eval "$(ssh-agent -s)"
 exec --no-startup-id xscreensaver
+
+# Load up the default applications we always are using
+exec --no-startup-id i3-msg 'workspace 1; exec --no-startup-id google-chrome-stable --profile-directory=Default rt.msi.umn.edu https://cuckoo.msi.umn.edu/nagios/' 
+exec --no-startup-id i3-msg 'workspace 1; exec --no-startup-id xchat'
+#exec --no-startup-id i3-msg 'workspace 2; exec --no-startup-id google-chrome-stable --profile-directory=Default mail.umn.edu' 
+#exec --no-startup-id i3-msg 'workspace 14; exec --no-startup-id google-chrome-stable --profile-directory="Profile 2" mail.google.com feedly.com' 
+#exec --no-startup-id i3-msg 'workspace 15; exec --no-startup-id google-chrome-stable --profile-directory="Profile 3" play.google.com/music/listen' 
+
+# Switch back to the primary workspaces
+#exec --no-startup-id i3-msg 'workspace 1'
+#exec --no-startup-id i3-msg 'workspace 2'
