@@ -107,8 +107,8 @@ bindsym $mod+bracketright workspace 14
 bindsym $mod+backslash workspace 15
 
 # move focused container to workspace
-bindsym $mod+Ctrl+Shift+Right move container to workspace next_on_output, workspace next_on_output
-bindsym $mod+Ctrl+Shift+Left move container to workspace prev_on_output, workspace prev_on_output
+bindsym Mod1+Ctrl+Shift+Right move container to workspace next_on_output, workspace next_on_output
+bindsym Mod1+Ctrl+Shift+Left move container to workspace prev_on_output, workspace prev_on_output
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
@@ -161,7 +161,8 @@ bar {
 }
 
 # Set some window associations
-for_window [class="Pcsx2"] floating enable
+# (?i) == Case insensitive
+for_window [class="(?i)pcsx2"] floating enable
 for_window [class="Xfce4-notifyd"] floating enable border none
 for_window [class="KeePass2"] floating enable
 for_window [title="Event Tester"] floating enable
