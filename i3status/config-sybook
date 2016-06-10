@@ -11,11 +11,8 @@ general {
         interval = 15
 }
 
-#order += "ipv6"
 order += "disk /"
 order += "disk /tmp"
-#order += "run_watch DHCP"
-#order += "run_watch VPN"
 order += "wireless wlp0s26u1u4i2"
 order += "wireless enp0s20u2"
 order += "wireless enp0s26u1u2"
@@ -42,6 +39,12 @@ wireless enp0s26u1u2 {
 
 battery 1 {
         format = "%status %percentage %remaining"
+        hide_seconds = "true"
+        threshold_type = "time"
+        status_chr = "⚇"
+        status_bat = "⚡"
+        status_full = "☻"
+        low_threshold = "30"
 }
 
 run_watch DHCP {
