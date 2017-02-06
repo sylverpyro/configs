@@ -10,3 +10,4 @@ set tabstop=2
 set cinoptions=(0,u0,U0
 filetype indent on
 set smartindent
+set foldmethod=indent

@@ -183,6 +183,7 @@ bindsym $mod+Ctrl+Shift+bracketright exec google-chrome-stable --profile-directo
 bindsym $mod+Ctrl+Shift+backslash exec google-chrome-stable --profile-directory="Profile 3" play.google.com/music/listen
 bindsym $mod+Shift+w exec firefox
 bindsym $mod+l exec xscreensaver-command --lock
+bindsym $mod+k exec keepassx
 # Audio controls
 bindsym XF86AudioMute exec "~/bin/vol-control.sh mute"
 bindsym XF86AudioLowerVolume exec "~/bin/vol-control.sh lower"
@@ -202,12 +203,12 @@ exec --no-startup-id eval "$(ssh-agent -s)"
 exec --no-startup-id xscreensaver
 
 # Load up the default applications we always are using
-exec --no-startup-id i3-msg 'workspace 1; exec --no-startup-id google-chrome-stable --profile-directory=Default rt.msi.umn.edu https://cuckoo.msi.umn.edu/nagios/' 
+exec --no-startup-id i3-msg 'workspace 1; exec --no-startup-id google-chrome-stable --profile-directory=Default rt.msi.umn.edu https://monitor.msi.umn.edu/nagios/' 
 exec --no-startup-id i3-msg 'workspace 1; exec --no-startup-id xchat'
-#exec --no-startup-id i3-msg 'workspace 2; exec --no-startup-id google-chrome-stable --profile-directory=Default mail.umn.edu' 
-#exec --no-startup-id i3-msg 'workspace 14; exec --no-startup-id google-chrome-stable --profile-directory="Profile 2" mail.google.com feedly.com' 
-#exec --no-startup-id i3-msg 'workspace 15; exec --no-startup-id google-chrome-stable --profile-directory="Profile 3" play.google.com/music/listen' 
+exec --no-startup-id i3-msg 'workspace 2; exec --no-startup-id google-chrome-stable --profile-directory=Default --new-window mail.umn.edu https://calendar.google.com/calendar/render?tab=mc#main_7' 
+exec --no-startup-id i3-msg 'workspace 14; exec --no-startup-id google-chrome-stable --profile-directory="Profile 2" --new-window https://mail.google.com/mail/u/0/#inbox https://calendar.google.com/calendar/render?tab=mc#main_7 https://feedly.com/i/index' 
+exec --no-startup-id i3-msg 'workspace 15; exec --no-startup-id google-chrome-stable --profile-directory="Profile 3" --new-window play.google.com/music/listen' 
 
 # Switch back to the primary workspaces
-#exec --no-startup-id i3-msg 'workspace 1'
-#exec --no-startup-id i3-msg 'workspace 2'
+exec --no-startup-id i3-msg 'workspace 1'
+exec --no-startup-id i3-msg 'workspace 2'
