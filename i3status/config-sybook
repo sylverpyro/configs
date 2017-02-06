@@ -11,36 +11,40 @@ general {
         interval = 15
 }
 
-#order += "ipv6"
 order += "disk /"
 order += "disk /tmp"
-#order += "run_watch DHCP"
-#order += "run_watch VPN"
 order += "wireless wlp0s26u1u4i2"
 order += "wireless enp0s20u2"
 order += "wireless enp0s26u1u2"
-order += "ethernet eth0"
 order += "battery 1"
 order += "load"
 order += "tztime local"
 order += "volume master"
 
 wireless wlp0s26u1u4i2 {
-        format_up = "Int. WiFi: (%essid|%bitrate|%quality) %ip"
+        format_up = "Int WiFi (%essid|%bitrate@%frequency|%quality) %ip"
+        format_down = ""
 }
+
+wireless enp0s20u2 {
+        format_up = "USB-L (%essid|%bitrate@%frequency|%quality) %ip"
+        format_down = ""
+}
+
 
 wireless enp0s26u1u2 {
-        format_up = "USB WiFi: (%essid|%bitrate|%quality) %ip"
-}
-
-ethernet eth0 {
-        # if you use %speed, i3status requires root privileges
-        format_up = "Eth: %ip (%speed)"
+        format_up = "USB-R (%essid|%bitrate@%frequency|%quality) %ip"
         format_down = ""
 }
 
 battery 1 {
         format = "%status %percentage %remaining"
+        hide_seconds = "true"
+        threshold_type = "time"
+        status_chr = "⚇"
+        status_bat = "⚡"
+        status_full = "☻"
+        low_threshold = "30"
 }
 
 run_watch DHCP {
@@ -60,14 +64,14 @@ load {
 }
 
 disk "/" {
-        format = "/: %free"
+        format = "/ %free"
 }
 disk "/tmp" {
-        format = "/tmp: %free"
+        format = "/tmp %free"
 }
 volume master {
-    format = "♪: %volume"
-    format_muted = "♪: M(%volume)"
+    format = "♪ %volume"
+    format_muted = "♪ M(%volume)"
     device = "default"
     mixer = "Master"
     mixer_idx = 0
