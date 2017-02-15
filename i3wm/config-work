@@ -179,7 +179,7 @@ bindsym $mod+t exec gnome-terminal
 bindsym $mod+x exec xchat
 bindsym $mod+c exec gnome-calculator
 bindsym $mod+w exec google-chrome-stable --profile-directory=Default --new-window
-bindsym $mod+Ctrl+Shift+bracketright exec google-chrome-stable --profile-directory="Profile 2" --new-window https://mail.google.com/mail/u/0/#inbox https://calendar.google.com/calendar/render?tab=mc#main_7 https://feedly.com/i/index
+bindsym $mod+Ctrl+Shift+bracketright exec google-chrome-stable --profile-directory="Profile 2" --new-window https://mail.google.com/mail/u/0/#inbox https://calendar.google.com/calendar/render?tab=mc#main_7 https://feedly.com/i/index https://www.wunderlist.com/#/lists/inbox
 bindsym $mod+Ctrl+Shift+backslash exec google-chrome-stable --profile-directory="Profile 3" --new-window play.google.com/music/listen
 bindsym $mod+Shift+w exec firefox
 bindsym $mod+l exec --no-startup-id xscreensaver-command --lock
@@ -208,10 +208,10 @@ exec --no-startup-id i3-msg 'workspace 1; exec xchat'
 exec --no-startup-id i3-msg 'workspace 1; exec google-chrome-stable --profile-directory=Default rt.msi.umn.edu https://monitor.msi.umn.edu/nagios/' 
 exec --no-startup-id i3-msg 'workspace 2: exec google-chrome-stable --profile-directory=Default --new-window mail.umn.edu https://calendar.google.com/calendar/render?tab=mc#main_7'
 # Switch to 14 and open personal web browser
-exec --no-startup-id i3-msg 'workspace 14; exec google-chrome-stable --profile-directory="Profile 2" --new-window https://mail.google.com/mail/u/0/#inbox https://calendar.google.com/calendar/render?tab=mc#main_7 https://feedly.com/i/index' 
+#exec --no-startup-id i3-msg 'workspace 14; exec google-chrome-stable --profile-directory="Profile 2" --new-window https://mail.google.com/mail/u/0/#inbox https://calendar.google.com/calendar/render?tab=mc#main_7 https://feedly.com/i/index' 
 # Switch to 15 and open web player
-exec --no-startup-id i3-msg 'workspace 15; exec google-chrome-stable --profile-directory="Profile 3" --new-window play.google.com/music/listen' 
+#exec --no-startup-id i3-msg 'workspace 15; exec google-chrome-stable --profile-directory="Profile 3" --new-window play.google.com/music/listen' 
 
 # Switch back to the primary workspaces
-exec --no-startup-id i3-msg 'workspace 1'
-exec --no-startup-id i3-msg 'workspace 2'
+#exec --no-startup-id i3-msg 'workspace 1'
+#exec --no-startup-id i3-msg 'workspace 2'
