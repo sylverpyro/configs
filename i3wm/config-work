@@ -177,16 +177,29 @@ bindsym $mod+r mode "resize"
 bindsym $mod+t exec gnome-terminal
 bindsym $mod+x exec xchat
 bindsym $mod+c exec gnome-calculator
+# Main web browser launches with W
 bindsym $mod+w exec google-chrome-stable --profile-directory=Default --new-window
+# Alt web browser launch with shift+W
 bindsym $mod+Shift+w exec firefox
 bindsym $mod+l exec --no-startup-id xscreensaver-command --lock
 bindsym $mod+k exec keepassx
 
 # Workspace specific Chrome launchers
+# Work profile
+# Workspace 1: Launch RT and Nagios
 bindsym $mod+Ctrl+Shift+1 exec google-chrome-stable --profile-directory=Default --new-window rt.msi.umn.edu https://monitor.msi.umn.edu/nagios/
-bindsym $mod+Ctrl+Shift+2 exec google-chrome-stable --profile-directory=Default --new-window mail.umn.edu https://calendar.google.com/calendar/render?tab=mc#main_7 https://drive.google.com/drive/my-drive https://docs.google.com/document/d/1dyfLhmlx3iMs6wEhuYcMCbBxfNilMpGfGmjqk_tFT4I/edit 
-bindsym $mod+Ctrl+Shift+bracketright exec google-chrome-stable --profile-directory="Profile 2" --new-window https://mail.google.com/mail/u/0/#inbox https://calendar.google.com/calendar/render?tab=mc#main_7 https://feedly.com/i/index https://www.wunderlist.com/#/lists/inbox
-bindsym $mod+Ctrl+Shift+backslash exec google-chrome-stable --profile-directory="Profile 3" --new-window play.google.com/music/listen
+# Workspace 2: Launch Mail, Calendar, Drive, to-do list, and the wiki 
+bindsym $mod+Ctrl+Shift+2 exec google-chrome-stable --profile-directory=Default --new-window mail.umn.edu https://calendar.google.com/calendar/render?tab=mc#main_7 https://drive.google.com/drive/my-drive https://docs.google.com/document/d/1dyfLhmlx3iMs6wEhuYcMCbBxfNilMpGfGmjqk_tFT4I/edit https://wiki.msi.umn.edu
+
+# Personal profile
+# Pinned tabs means we don't need to autolaunch sites as they are pinned in the profile
+#bindsym $mod+Ctrl+Shift+bracketright exec google-chrome-stable --profile-directory="Profile 2" --new-window https://mail.google.com/mail/u/0/#inbox https://calendar.google.com/calendar/render?tab=mc#main_7 https://feedly.com/i/index https://www.wunderlist.com/#/lists/inbox
+bindsym $mod+Ctrl+Shift+bracketright exec google-chrome-stable --profile-directory="Profile 2" --new-window 
+
+# Music profile
+# Pinned tabs means we don't need to autolaunch sites as they are pinned in the profile
+#bindsym $mod+Ctrl+Shift+backslash exec google-chrome-stable --profile-directory="Profile 3" --new-window play.google.com/music/listen
+bindsym $mod+Ctrl+Shift+backslash exec google-chrome-stable --profile-directory="Profile 3" --new-window 
 
 # Audio controls
 bindsym XF86AudioMute exec "~/bin/vol-control.sh mute"
@@ -203,13 +216,13 @@ bar {
 }
 
 # Background services that need to be up
-exec --no-startup-id eval "$(ssh-agent -s)"
+#exec --no-startup-id eval "$(ssh-agent -s)"
 exec --no-startup-id xscreensaver
 
 # Load up the default applications we always are using
 # The first to load will be on the bottom of the screen
-exec --no-startup-id i3-msg 'workspace 1; exec xchat'
-exec --no-startup-id i3-msg 'workspace 1; exec google-chrome-stable --profile-directory=Default --new-window rt.msi.umn.edu https://monitor.msi.umn.edu/nagios/' 
+#exec --no-startup-id i3-msg 'workspace 1; exec xchat'
+#exec --no-startup-id i3-msg 'workspace 1; exec google-chrome-stable --profile-directory=Default --new-window rt.msi.umn.edu https://monitor.msi.umn.edu/nagios/' 
 #exec --no-startup-id i3-msg 'workspace 2: exec google-chrome-stable --profile-directory=Default --new-window mail.umn.edu https://calendar.google.com/calendar/render?tab=mc#main_7'
 # Switch to 14 and open personal web browser
 #exec --no-startup-id i3-msg 'workspace 14; exec google-chrome-stable --profile-directory="Profile 2" --new-window https://mail.google.com/mail/u/0/#inbox https://calendar.google.com/calendar/render?tab=mc#main_7 https://feedly.com/i/index' 
