@@ -211,7 +211,8 @@ bindsym XF86AudioLowerVolume exec "~/bin/vol-control.sh lower"
 bindsym XF86AudioRaiseVolume exec "~/bin/vol-control.sh raise"
 
 # Help Message
-bindsym $mod+h exec xmessage "$(grep ^bindsym ~/.config/i3/config | grep -v "workspace\|XF86")"
+# Font strings can be found via 'xlsfonts'
+bindsym $mod+h exec xmessage -font '-misc-liberation mono-bold-r-normal--0-0-0-0-p-0-iso8859-1' -geometry 800x600 "$(grep ^bindsym ~/.config/i3/config | grep -v "workspace\|XF86")"
 
 # Automatic window rules
 # Google Play Music Mini Player - stick and float
@@ -220,6 +221,8 @@ for_window [class="google-chrome" title="Google Play Music" window_role="app"] f
 no_focus [window_role="pop-up"]
 # Calculator - Stick and float
 for_window [class="Gnome-calculator" instance="gnome-calculator"] floating enable sticky enable
+# xmsg windows
+for_window [class="Xmessage" instance="xmessage" title="xmessage"] floating enable
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
