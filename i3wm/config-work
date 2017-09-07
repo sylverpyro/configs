@@ -192,16 +192,16 @@ bindsym $mod+l exec --no-startup-id xscreensaver-command --lock
 # Work profile
 
 # Workspace 1: Launch RT and Nagios
-bindsym $mod+Ctrl+Shift+1 exec google-chrome-stable --profile-directory=Default --new-window --pinned-tab-count=2 https://rt.msi.umn.edu/ https://monitor.msi.umn.edu/nagios/ https://www.msi.umn.edu/systemstatus
+bindsym $mod+Ctrl+Shift+1 exec google-chrome-stable --profile-directory=Default --new-window --pinned-tab-count=4 https://rt.msi.umn.edu/ https://monitor.msi.umn.edu/nagios/ https://www.msi.umn.edu/systemstatus https://umnprd.service-now.com/sysstatus/
 
 # Workspace 2: Launch Mail, Calendar, Drive, to-do list, and the wiki 
 bindsym $mod+Ctrl+Shift+2 exec google-chrome-stable --profile-directory=Default --new-window --pinned-tab-count=5 mail.umn.edu https://calendar.google.com/calendar/render?tab=mc#main_7 https://keep.google.com/ https://drive.google.com/drive/my-drive https://wiki.msi.umn.edu
 
-# Personal profile
-bindsym $mod+Ctrl+Shift+bracketright exec google-chrome-stable --profile-directory="Profile 2" --new-window --pinned-tab-count=6 https://mail.google.com https://keep.google.com https://calendar.google.com https://drive.google.com https://play.google.com/music/listen https://play.pocketcasts.com/web/podcasts/index#/podcasts/new_releases
+# Workspace 14 ']': Personal chrome profile: Mail, drive, keep, ect.
+bindsym $mod+Ctrl+Shift+bracketright exec google-chrome-stable --profile-directory="Profile 2" --new-window --pinned-tab-count=4 https://mail.google.com https://keep.google.com https://calendar.google.com https://drive.google.com
 
-# Music profile ## Switched subscription over to main profile
-# Pinned tabs means we don't need to autolaunch sites as they are pinned in the profile
+# Workspace 15 '\': Music profile 
+bindsym $mod+Ctrl+Shift+backslash exec google-chrome-stable --profile-directory="Profile 2" --new-window --pinned-tab-count=2 https://play.google.com/music/listen https://play.pocketcasts.com/web/podcasts/index#/podcasts/new_releases
 #bindsym $mod+Ctrl+Shift+backslash exec google-chrome-stable --profile-directory="Profile 3" --new-window play.google.com/music/listen
 #bindsym $mod+Ctrl+Shift+backslash exec google-chrome-stable --profile-directory="Profile 3" --new-window 
 
