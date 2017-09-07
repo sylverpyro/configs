@@ -1,5 +1,20 @@
 filetype plugin on
 filetype indent on
+
+" Show EOL characters as ¬
+"set listchars=eol:¬
+set listchars=tab:‣\ ,trail:·,precedes:«,extends:»,eol:¬
+set list
+
+" Turn on syntax highlighting
+syntax on
+
+"Invisible character colors 
+"highlight NonText guifg=#4a4a59
+"highlight! NonText guifg=#000000
+"highlight SpecialKey guifg=#4a4a59
+"highlight! SpecialKey guifg=#000000
+
 " Commented out for now, finding a better color
 "" colorscheme darkblue
 "" colorscheme slate
@@ -7,12 +22,12 @@ filetype indent on
 " These settings are needed for the 'sierra' scheme
 " to work properly
 set t_Co=256
-set background=dark
+"set background=dark
+"let g:sierra_Sunset = 1
 let g:sierra_Twilight = 1
+"let g:sierra_Midnight = 1
+"let g:sierra_Pitch = 1
 colorscheme sierra
-
-" Turn on syntax highlighting
-syntax on
 
 " Make tabs and indenting work better
 set expandtab
@@ -26,3 +41,9 @@ set smartindent
 
 " Turn on line folding, keying off of indents
 set foldmethod=indent
+
+" Turn on matching and jumping
+set showmatch
+set matchtime=3
+runtime matchit
+

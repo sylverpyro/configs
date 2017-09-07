@@ -79,6 +79,9 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# Pin/unpin focused window to all workspaces
+bindsym $mod+Shift+p sticky toggle
+
 # split in horizontal orientation
 bindsym $mod+Shift+h split h
 
@@ -182,29 +185,41 @@ bindsym $mod+w exec google-chrome-stable --profile-directory=Default --new-windo
 # Alt web browser launch with shift+W
 bindsym $mod+Shift+w exec firefox
 bindsym $mod+l exec --no-startup-id xscreensaver-command --lock
-bindsym $mod+k exec keepassx
+# No longer used
+#bindsym $mod+k exec keepassx
 
 # Workspace specific Chrome launchers
 # Work profile
+
 # Workspace 1: Launch RT and Nagios
-bindsym $mod+Ctrl+Shift+1 exec google-chrome-stable --profile-directory=Default --new-window rt.msi.umn.edu https://monitor.msi.umn.edu/nagios/
+bindsym $mod+Ctrl+Shift+1 exec google-chrome-stable --profile-directory=Default --new-window --pinned-tab-count=2 https://rt.msi.umn.edu/ https://monitor.msi.umn.edu/nagios/ https://www.msi.umn.edu/systemstatus
+
 # Workspace 2: Launch Mail, Calendar, Drive, to-do list, and the wiki 
-bindsym $mod+Ctrl+Shift+2 exec google-chrome-stable --profile-directory=Default --new-window mail.umn.edu https://calendar.google.com/calendar/render?tab=mc#main_7 https://drive.google.com/drive/my-drive https://docs.google.com/document/d/1dyfLhmlx3iMs6wEhuYcMCbBxfNilMpGfGmjqk_tFT4I/edit https://wiki.msi.umn.edu
+bindsym $mod+Ctrl+Shift+2 exec google-chrome-stable --profile-directory=Default --new-window --pinned-tab-count=5 mail.umn.edu https://calendar.google.com/calendar/render?tab=mc#main_7 https://keep.google.com/ https://drive.google.com/drive/my-drive https://wiki.msi.umn.edu
 
 # Personal profile
-# Pinned tabs means we don't need to autolaunch sites as they are pinned in the profile
-#bindsym $mod+Ctrl+Shift+bracketright exec google-chrome-stable --profile-directory="Profile 2" --new-window https://mail.google.com/mail/u/0/#inbox https://calendar.google.com/calendar/render?tab=mc#main_7 https://feedly.com/i/index https://www.wunderlist.com/#/lists/inbox
-bindsym $mod+Ctrl+Shift+bracketright exec google-chrome-stable --profile-directory="Profile 2" --new-window 
+bindsym $mod+Ctrl+Shift+bracketright exec google-chrome-stable --profile-directory="Profile 2" --new-window --pinned-tab-count=6 https://mail.google.com https://keep.google.com https://calendar.google.com https://drive.google.com https://play.google.com/music/listen https://play.pocketcasts.com/web/podcasts/index#/podcasts/new_releases
 
-# Music profile
+# Music profile ## Switched subscription over to main profile
 # Pinned tabs means we don't need to autolaunch sites as they are pinned in the profile
 #bindsym $mod+Ctrl+Shift+backslash exec google-chrome-stable --profile-directory="Profile 3" --new-window play.google.com/music/listen
-bindsym $mod+Ctrl+Shift+backslash exec google-chrome-stable --profile-directory="Profile 3" --new-window 
+#bindsym $mod+Ctrl+Shift+backslash exec google-chrome-stable --profile-directory="Profile 3" --new-window 
 
 # Audio controls
 bindsym XF86AudioMute exec "~/bin/vol-control.sh mute"
 bindsym XF86AudioLowerVolume exec "~/bin/vol-control.sh lower"
 bindsym XF86AudioRaiseVolume exec "~/bin/vol-control.sh raise"
+
+# Help Message
+bindsym $mod+h exec xmessage "$(grep ^bindsym ~/.config/i3/config | grep -v "workspace\|XF86")"
+
+# Automatic window rules
+# Google Play Music Mini Player - stick and float
+for_window [class="google-chrome" title="Google Play Music" window_role="app"] floating enable sticky enable
+# Don't focus pop-ups as they can steal input accidentally
+no_focus [window_role="pop-up"]
+# Calculator - Stick and float
+for_window [class="Gnome-calculator" instance="gnome-calculator"] floating enable sticky enable
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -221,6 +236,7 @@ exec --no-startup-id xscreensaver
 
 # Load up the default applications we always are using
 # The first to load will be on the bottom of the screen
+# These don't work properly (workspace switching doesn't occur properly)
 #exec --no-startup-id i3-msg 'workspace 1; exec xchat'
 #exec --no-startup-id i3-msg 'workspace 1; exec google-chrome-stable --profile-directory=Default --new-window rt.msi.umn.edu https://monitor.msi.umn.edu/nagios/' 
 #exec --no-startup-id i3-msg 'workspace 2: exec google-chrome-stable --profile-directory=Default --new-window mail.umn.edu https://calendar.google.com/calendar/render?tab=mc#main_7'
