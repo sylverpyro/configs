@@ -180,10 +180,17 @@ bindsym $mod+r mode "resize"
 bindsym $mod+t exec gnome-terminal
 bindsym $mod+x exec xchat
 bindsym $mod+c exec gnome-calculator
-# Main web browser launches with W
+# Chrome running work profile
 bindsym $mod+w exec google-chrome-stable --profile-directory=Default --new-window
-# Alt web browser launch with shift+W
-bindsym $mod+Shift+w exec firefox
+# Chrome running personal profile
+bindsym $mod+Ctrl+bracketright exec google-chrome-stable --profile-directory="Profile 2" --new-window
+# Firefox with the default profile (no proxy)
+bindsym $mod+Shift+w exec firefox -new-instance -no-remote --no-xshm -P DefaultVanilla
+# Firefox with SOCKS proxy to Peacock configured
+bindsym $mod+Ctrl+p exec firefox -new-instance -no-remote --no-xshm -P localhost_8080_SOCKS
+# Firefox with profile selector
+bindsym $mod+Shift+Ctrl+p exec firefox -new-instance -no-remote --no-xshm -ProfileManager
+
 bindsym $mod+l exec --no-startup-id xscreensaver-command --lock
 # No longer used
 #bindsym $mod+k exec keepassx
